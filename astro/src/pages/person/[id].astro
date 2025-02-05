@@ -1,0 +1,40 @@
+---
+import { getCollection, render, getEntries } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const personer = await getCollection("personer");
+  return personer.map((person) => ({
+    params: { id: person.id },
+    props: { person },
+  }));
+}
+const { person } = Astro.props;
+const hendelser = person.data.hendelser
+  ? await getEntries(person.data.hendelser)
+  : [];
+const { Content } = await render(person);
+const navn = `${person.data.fornavn} ${person.data.etternavn}`
+const upperFirstChar = (type: string) => type[0].toUpperCase() + type.slice(1)
+const formatDate = (date: string) => new Date(date).toLocaleDateString("no-NB")
+
+---
+
+<Layout title={navn}>
+  <h1>{navn}</h1>
+  <p>
+    Født: {formatDate(person.data.født)}
+  </p>
+
+  <h2>Hendelser</h2>
+  {
+    hendelser.map((hendelse) => (
+      <h3>{upperFirstChar(hendelse.data.type)}</h3>
+      <p> 
+        {hendelse.data.sted} {formatDate(hendelse.data.dato)}
+      </p>
+      <a href={hendelse.data.kilde.url}>{hendelse.data.kilde.tittel}</a>
+    ))
+  }
+  <Content />
+</Layout>
