@@ -2,5 +2,7 @@ fornavn: Reidun
 etternavn: Sundby
 pikenavn: Pedersen
 født: '1923-06-04'
+far: pedersen-henrik
 hendelser:
-- '1'
+- '1001'
+- '1004'

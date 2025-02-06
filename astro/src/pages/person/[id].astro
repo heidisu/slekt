@@ -28,13 +28,20 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString("no-NB")
 
   <h2>Hendelser</h2>
   {
-    hendelser.map((hendelse) => (
+    hendelser.map((hendelse) => hendelse.data.kilde ? (
       <h3>{upperFirstChar(hendelse.data.type)}</h3>
       <p> 
         {hendelse.data.sted} {formatDate(hendelse.data.dato)}
       </p>
       <a href={hendelse.data.kilde.url}>{hendelse.data.kilde.tittel}</a>
-    ))
+    ) : 
+    (<h3>{upperFirstChar(hendelse.data.type)}</h3>
+      <p> 
+        {hendelse.data.sted} {formatDate(hendelse.data.dato)}
+        <br/>
+        {hendelse.data.kommentar}
+      </p>)
+  )
   }
   <Content />
 </Layout>
