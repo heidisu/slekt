@@ -1,6 +1,10 @@
 ---
 import { getCollection, render, getEntries } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import Title from "../../components/Title.astro";
+import Timeline from "../../components/Timeline.astro";
+import type { Item } from "../../types";
 
 export async function getStaticPaths() {
   const personer = await getCollection("personer");
@@ -13,15 +17,33 @@ const { person } = Astro.props;
 const hendelser = person.data.hendelser
   ? await getEntries(person.data.hendelser)
   : [];
-const { Content } = await render(person);
 const navn = `${person.data.fornavn} ${person.data.etternavn}`
 const upperFirstChar = (type: string) => type[0].toUpperCase() + type.slice(1)
 const formatDate = (date: string) => new Date(date).toLocaleDateString("no-NB")
+const items: Array<Item> = [
+    { 
+      title: "test",
+      description: "sfdsfdsf",
+      icon: "house"
+    },
+    { 
+      title: "test",
+      description: "sfdsfdsf",
+      icon: "house"
+    },
+    { 
+      title: "test",
+      description: "sfdsfdsf",
+      icon: "house"
+    },
+]
 
 ---
 
 <Layout title={navn}>
-  <h1>{navn}</h1>
+  <Container>
+  <Title>{navn}</Title>
+  <div>
   <p>
     Født: {formatDate(person.data.født)}
   </p>
@@ -43,5 +65,7 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString("no-NB")
       </p>)
   )
   }
-  <Content />
+  </div>
+  <Timeline items={items}/>
+  </Container>
 </Layout>

@@ -1,0 +1,50 @@
+---
+import Container from "./Container.astro";
+import { Icon } from 'astro-icon/components';
+
+---
+
+<header>
+    <nav id="nav" class="absolute group z-10 w-full border-b border-black/5 dark:border-white/5 bg-gray-100">
+        <Container>
+            <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
+                <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-fit">
+                    <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
+                        <div aria-hidden="true" class="flex space-x-1">
+                            <Icon name="house" class="text-4xl text-primary" />
+                        </div>
+                        <span class="text-2xl font-bold text-gray-900 dark:text-white">Slekt</span>
+                    </a>
+
+                    <div class="relative flex max-h-10 items-center lg:hidden">
+                        <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6 active:scale-95 duration-300">
+                            <div aria-hidden="true" id="line" class="m-auto h-0.5 w-5 rounded bg-gray-950 transition duration-300 dark:bg-white origin-top group-data-[state=active]:rotate-45 group-data-[state=active]:translate-y-1.5"></div>
+                            <div aria-hidden="true" id="line2" class="m-auto mt-2 h-0.5 w-5 rounded bg-gray-950 transition duration-300 dark:bg-white origin-bottom group-data-[state=active]:-rotate-45 group-data-[state=active]:-translate-y-1"></div>
+                        </button>
+                    </div>
+                </div>
+                <div id="navLayer" aria-hidden="true" class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 group-data-[state=active]:origin-top group-data-[state=active]:scale-y-100 dark:bg-gray-950/70 lg:hidden"></div>
+            </div>
+        </Container>
+    </nav>
+</header>
+
+<script>
+    let isToggled = false;
+    const navbar = document.querySelector("#nav") as HTMLElement;
+    const menuBtn = document.querySelector("#hamburger") as HTMLButtonElement;
+
+    function toggleNavlinks() {
+        if (isToggled) {
+            navbar.dataset.state = "active";
+        } else {
+            navbar.dataset.state = "";
+        }
+    }
+
+    menuBtn.addEventListener("click", () => {
+        isToggled = !isToggled;
+        toggleNavlinks();
+    });
+
+</script>
