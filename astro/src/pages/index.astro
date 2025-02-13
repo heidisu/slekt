@@ -9,13 +9,7 @@ const personer =
   .sort((a, b) => {
     let a_str = `${a.data.etternavn}${a.data.fornavn}`
     let b_str = `${b.data.etternavn}${b.data.fornavn}`
-    if(a_str < b_str){
-      return -1
-    } else if (a_str > b_str){
-      return 1
-    } else {
-      return 0
-    }
+    return a_str.localeCompare(b_str)
   });
 
 ---

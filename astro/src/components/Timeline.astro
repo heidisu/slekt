@@ -1,20 +1,19 @@
 ---
-import { Icon } from 'astro-icon/components';
-import type { Item } from '../types'
-
+import type { Hendelse } from "../types";
+import { formatDate, upperFirstChar } from "../utils";
+import LinkExternal from "./LinkExternal.astro";
 export interface Props {
-  items: Array<Item>;
+  hendelser: Array<Hendelse>;
 }
 
-const { items = []} = Astro.props as Props;
+const { hendelser = []} = Astro.props as Props;
 
-const iconclass = 'text-primary dark:text-slate-200 border-primary dark:border-blue-700'
 ---
 
 {
-  items && items.length && (
+  hendelser && hendelser.length && (
     <div class="pt-10">
-      {items.map(({ title, description, icon }, index = 0) => (
+      {hendelser.map((hendelse, index = 0) => (
         <div class='flex'>
           <div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4">
             <div>
@@ -22,15 +21,14 @@ const iconclass = 'text-primary dark:text-slate-200 border-primary dark:border-b
                   <div class='w-5 h-5 p-1 rounded-full border-2 border-primary'/>
               </div>
             </div>
-            {index !== items.length - 1 && <div class="w-px h-full bg-primary/50 dark:bg-slate-400/50" />}
+            {index !== hendelser.length - 1 && <div class="w-px h-full bg-primary/50 dark:bg-slate-400/50" />}
           </div>
-          <div class={`-mt-1 ${index !== items.length - 1 ? 'pb-10' : ''}`}>
-            {title && <p class='font-semibold' set:html={title} />}
-            {description && (
-              <p
-                set:html={description}
-              />
-            )}
+          <div class={`-mt-1 ${index !== hendelser.length - 1 ? 'pb-10' : ''}`}>
+            <p class='font-semibold'>{upperFirstChar(hendelse.type)}</p>
+            <p>{formatDate(hendelse.dato)}</p>
+            <p>{hendelse.sted}</p>
+            {hendelse.type === 'vielse' && <p>Gift med TODO</p>}
+            {hendelse.kilde && <p><LinkExternal href={hendelse.kilde.url}>{hendelse.kilde.tittel}</LinkExternal></p>}
           </div>
         </div>
       ))}
