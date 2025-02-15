@@ -4,7 +4,7 @@ const { href } = Astro.props;
 const url = new URL(href)
 ---
 
-<a href={href} class="text-primary underline underline-offset-4 flex">
+<a href={href} target="_blank" class="text-primary underline underline-offset-4 flex">
     <span>{url.host}</span>
     <Icon name="open" class="center" size="20px"/>
 </a>
