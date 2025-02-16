@@ -1,20 +1,32 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-const personer = await getCollection("personer");
+import Container from "../components/Container.astro";
+import Title from "../components/Title.astro";
+import Link from "../components/Link.astro";
+const personer = 
+  (await getCollection("personer"))
+  .sort((a, b) => {
+    let a_str = `${a.data.etternavn}${a.data.fornavn}`
+    let b_str = `${b.data.etternavn}${b.data.fornavn}`
+    return a_str.localeCompare(b_str)
+  });
+
 ---
 
 <Layout title="Slekt">
-  <h1>Slekt</h1>
-
-  <h2>Personer</h2>
-  <ul>
-    {
-      personer.map((person) => (
-        <li>
-          <a href={`/person/${person.id}`}>{person.data.fornavn} {person.data.etternavn}</a>
-        </li>
-      ))
-    }
-  </ul>
+    <Container>
+      <Title>Personer</Title>
+      <ul>
+        {
+          personer.map((person) => (
+            <li>
+              <Link href={`/person/${person.id}`}>
+                <span>{person.data.etternavn}, {person.data.fornavn}</span>
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
 </Layout>
