@@ -1,11 +1,12 @@
 ---
-import { getCollection, getEntries } from "astro:content";
+import { getCollection, getEntries, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/Container.astro";
 import Title from "../../components/Title.astro";
 import Timeline from "../../components/Timeline.astro";
-import { formatDate, upperFirstChar } from "../../utils";
-import type { Hendelse } from "../../types";
+import { formatDate, getPersonDisplayName, upperFirstChar } from "../../utils";
+import Subtitle from "../../components/Subtitle.astro";
+import Link from "../../components/Link.astro";
 
 export async function getStaticPaths() {
   const personer = await getCollection("personer");
@@ -20,7 +21,17 @@ const hendelser = (
 )
   .map((h) => h.data)
   .sort((a, b) => a.dato.localeCompare(b.dato));
-const navn = `${person.data.fornavn} ${person.data.etternavn}`;
+const navn = getPersonDisplayName(person.data);
+const barn = (
+  person.data.barn ? await getEntries(person.data.barn) : []
+)
+const mor = (
+  person.data.mor && await getEntry(person.data.mor)
+)
+const far = (
+  person.data.far && await getEntry(person.data.far)
+)
+
 ---
 
 <Layout title={navn}>
@@ -31,7 +42,21 @@ const navn = `${person.data.fornavn} ${person.data.etternavn}`;
         Født: {formatDate(person.data.født)}
         {person.data.pikenavn && `, pikenavn ${person.data.pikenavn}.`}
       </p>
+        {barn.length > 0 && <div class="pt-5">
+          <Subtitle>Barn</Subtitle>
+          <ul>
+        {
+          barn.map((barn) => (
+            <li>
+              <Link href={`/person/${barn.id}`}>
+                <span>{getPersonDisplayName(barn.data)}</span>
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+        </div>}
     </div>
-    <Timeline hendelser={hendelser} />
+    <Timeline hendelser={hendelser} personId={person.id}/>
   </Container>
 </Layout>

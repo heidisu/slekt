@@ -1,12 +1,16 @@
 ---
-import type { Hendelse } from "../types";
-import { formatDate, upperFirstChar } from "../utils";
+import type { ReferenceContentEntry } from "astro:content";
+import type { Hendelse, Person } from "../types";
+import { formatDate, getPersonDisplayName, upperFirstChar } from "../utils";
 import LinkExternal from "./LinkExternal.astro";
+import { getEntry } from "astro:content";
+import MarriedTo from "./MarriedTo.astro";
 export interface Props {
+  personId: string,
   hendelser: Array<Hendelse>;
 }
 
-const { hendelser = []} = Astro.props as Props;
+const { hendelser = [], personId} = Astro.props as Props;
 
 ---
 
@@ -27,7 +31,7 @@ const { hendelser = []} = Astro.props as Props;
             <p class='font-semibold'>{upperFirstChar(hendelse.type)}</p>
             <p>{formatDate(hendelse.dato)}</p>
             <p>{hendelse.sted}</p>
-            {hendelse.type === 'vielse' && <p>Gift med TODO</p>}
+            {hendelse.type === 'vielse' && <MarriedTo hendelse={hendelse} personId={personId}/>}
             {hendelse.kilde && <p><LinkExternal href={hendelse.kilde.url}>{hendelse.kilde.tittel}</LinkExternal></p>}
           </div>
         </div>
