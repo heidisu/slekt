@@ -31,6 +31,7 @@ const mor = (
 const far = (
   person.data.far && await getEntry(person.data.far)
 )
+const foreldre = (mor ? [mor] : []).concat(far ? [far] : []) 
 
 ---
 
@@ -42,6 +43,23 @@ const far = (
         Født: {formatDate(person.data.født)}
         {person.data.pikenavn && `, pikenavn ${person.data.pikenavn}.`}
       </p>
+      {foreldre.length > 0 &&
+      <div class="pt-5">
+        <Subtitle>Foreldre</Subtitle>
+        <ul>
+        {
+          
+        foreldre.map((forelder) => 
+          <li>
+            <Link href={`/person/${forelder.id}`}>
+              {getPersonDisplayName(forelder.data)}
+            </Link>
+          </li>
+        )
+        }
+        </ul>
+      </div>
+      }
         {barn.length > 0 && <div class="pt-5">
           <Subtitle>Barn</Subtitle>
           <ul>
@@ -49,7 +67,7 @@ const far = (
           barn.map((barn) => (
             <li>
               <Link href={`/person/${barn.id}`}>
-                <span>{getPersonDisplayName(barn.data)}</span>
+                {getPersonDisplayName(barn.data)}
               </Link>
             </li>
           ))
