@@ -10,4 +10,7 @@ export default defineConfig({
   },
 
   integrations: [icon()],
+
+  site: 'https://heidisu.github.io',
+  base: 'slekt',
 });
