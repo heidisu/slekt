@@ -33,6 +33,7 @@ const { hendelser = [], personId} = Astro.props as Props;
             <p>{hendelse.sted}</p>
             {hendelse.type === 'vielse' && <MarriedTo hendelse={hendelse} personId={personId}/>}
             {hendelse.kilde && <p><LinkExternal href={hendelse.kilde.url}>{hendelse.kilde.tittel}</LinkExternal></p>}
+            {hendelse.kommentar && <p>{hendelse.kommentar}</p>}
           </div>
         </div>
       ))}
