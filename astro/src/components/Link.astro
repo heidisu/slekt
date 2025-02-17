@@ -1,4 +1,6 @@
 ---
+import astroConfig from "../../astro.config.mjs"
+
 const {href} = Astro.props
 ---
-<a href={href} class="text-primary underline underline-offset-4"><slot/></a>
+<a href=`/${astroConfig.base}/${href}` class="text-primary underline underline-offset-4"><slot/></a>
