@@ -41,7 +41,6 @@ const foreldre = (mor ? [mor] : []).concat(far ? [far] : [])
     <div>
       <p>
         Født: {formatDate(person.data.født)}
-        {person.data.pikenavn && `, pikenavn ${person.data.pikenavn}.`}
       </p>
       {foreldre.length > 0 &&
       <div class="pt-5">
