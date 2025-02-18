@@ -10,7 +10,6 @@ describe.each(personer)("$id", ({ id, data }) => {
                 console.log(id, hendelse)
             const eksisterendeHendelse = hendelser.find((h) => h.id == hendelse.id)
             expect(eksisterendeHendelse).toBeDefined()
-            console.log(eksisterendeHendelse?.data.personer)
             expect(eksisterendeHendelse?.data.personer.map((p) => p.id)).contains(id)
             })
         }
