@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 import type { Hendelse, Person } from "../types";
 import Link from "./Link.astro";
 import { getPersonDisplayName } from "../utils";
+import type { ReferenceDataEntry } from "astro:content";
 
 export interface Props {
     personId: string,
@@ -10,7 +11,7 @@ export interface Props {
   }
   
 const { hendelse, personId} = Astro.props as Props;
-const annenPerson = hendelse.personer.find((p) => p.id != personId)
+const annenPerson: ReferenceDataEntry<Person> = hendelse.personer.find((p: ReferenceDataEntry<Person>) => p.id != personId)
 const ektefelle = await getEntry(annenPerson)
 ---
 <p>
