@@ -74,6 +74,6 @@ const foreldre = (mor ? [mor] : []).concat(far ? [far] : [])
       </ul>
         </div>}
     </div>
-    <Timeline hendelser={hendelser} personId={person.id}/>
+    {hendelser.length > 0 && <Timeline hendelser={hendelser} personId={person.id}/>}
   </Container>
 </Layout>

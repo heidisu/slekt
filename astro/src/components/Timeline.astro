@@ -1,6 +1,6 @@
 ---
 import type { Hendelse } from "../types";
-import { formatDate, upperFirstChar } from "../utils";
+import { formatDate, upperFirstChar, getYear } from "../utils";
 import LinkExternal from "./LinkExternal.astro";
 import MarriedTo from "./MarriedTo.astro";
 export interface Props {
@@ -26,8 +26,8 @@ const { hendelser = [], personId} = Astro.props as Props;
             {index !== hendelser.length - 1 && <div class="w-px h-full bg-primary/50 dark:bg-slate-400/50" />}
           </div>
           <div class={`-mt-1 ${index !== hendelser.length - 1 ? 'pb-10' : ''}`}>
-            <p class='font-semibold'>{upperFirstChar(hendelse.type)}</p>
-            <p>{formatDate(hendelse.dato)}</p>
+            <p class='font-semibold'>{upperFirstChar(hendelse.type)} {hendelse.type == 'folketelling' && ` ${getYear(hendelse.dato)}`}</p>
+            {hendelse.type !== 'folketelling' && <p>{formatDate(hendelse.dato)}</p>}
             <p>{hendelse.sted}</p>
             {hendelse.type === 'vielse' && <MarriedTo hendelse={hendelse} personId={personId}/>}
             {hendelse.kilde && <p><LinkExternal href={hendelse.kilde.url}>{hendelse.kilde.tittel}</LinkExternal></p>}
