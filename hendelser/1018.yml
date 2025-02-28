@@ -1,0 +1,10 @@
+type: folketelling
+sted: Kongsberggaten 8, leilighet 11
+dato: '1920-01-01'
+kilde:
+  tittel: Folketelling 1920 for 0301 Kristiania kjøpstad
+  url: 'https://www.digitalarkivet.no/census/apartment/lf01073701134856'
+personer:
+- jensen-magdalene-juliane
+- jensen-andreas
+- amundsen-julie
