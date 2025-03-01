@@ -2,7 +2,7 @@ import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 export const hendelseSchema = z.object({
-    type: z.enum(['dåp', 'konfirmasjon', 'vielse', 'folketelling']),
+    type: z.enum(['dåp', 'konfirmasjon', 'vielse', 'begravelse', 'folketelling']),
     dato: z.string().date(),
     sted: z.string(),
     personer: z.array(reference('personer')),

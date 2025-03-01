@@ -30,6 +30,7 @@ const toHendelseType = (arg) => {
         case 'd': return 'dåp'
         case 'k': return 'konfirmasjon'
         case 'v': return 'vielse'
+        case 'b': return 'begravelse'
         case 'f': return 'folketelling'
         default: null
     }

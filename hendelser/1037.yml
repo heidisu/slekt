@@ -1,0 +1,8 @@
+type: folketelling
+dato: '1875-01-01'
+sted: Sundby
+kilde:
+  tittel: 'Folketelling 1875 for Ullensaker prestegjeld'
+  url: 'https://www.digitalarkivet.no/census/rural-residence/bf01052050007048'
+personer:
+- sundby-elen-kristine
