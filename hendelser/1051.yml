@@ -1,0 +1,8 @@
+type: folketelling
+dato: '1891-01-01'
+sted: Nygård, Fjell
+kilde:
+  tittel: 'Folketelling 1891 for Eidskog herred'
+  url: 'https://www.digitalarkivet.no/census/rural-residence/bf01052732000218'
+personer:
+- andreasen-anton

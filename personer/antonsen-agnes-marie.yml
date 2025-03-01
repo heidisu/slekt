@@ -3,6 +3,8 @@ etternavn: Antonsen
 født: '1901-06-10'
 barn:
 - sundby-harry
+far: andreasen-anton
+mor: haakensdtr-marthea
 hendelser:
 - '1027'
 - '1030'
