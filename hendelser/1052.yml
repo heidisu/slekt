@@ -1,0 +1,9 @@
+type: folketelling
+dato: '1900-01-01'
+sted: Brænaasen Magnor
+kilde:
+  tittel: 'Folketelling 1900 for Eidskog herred'
+  url: 'https://www.digitalarkivet.no/census/rural-residence/bf01037057000917'
+personer:
+- andreasen-anton
+- haakensdtr-marthea

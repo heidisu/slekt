@@ -1,0 +1,9 @@
+type: folketelling
+dato: '1920-01-01'
+sted: Bækaasen, Skotterud
+kilde:
+  tittel: 'Folketelling 1920 for Eidskog herred'
+  url: 'https://www.digitalarkivet.no/census/rural-residence/bf01073713003375'
+personer:
+- andreasen-anton
+- haakensdtr-marthea
