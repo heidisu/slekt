@@ -1,6 +1,8 @@
 fornavn: Hans Laurentius Larsen
 etternavn: Sundby
 født: '1900-09-02'
+far: larsen-kristian
+mor: sundby-elen-kristine
 barn:
 - sundby-harry
 hendelser:
@@ -9,3 +11,4 @@ hendelser:
 - '1029'
 - '1032'
 - '1033'
+- '1036'

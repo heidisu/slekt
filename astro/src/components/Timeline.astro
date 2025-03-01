@@ -29,7 +29,7 @@ const { hendelser = [], personId} = Astro.props as Props;
             <p class='font-semibold'>{upperFirstChar(hendelse.type)} {hendelse.type == 'folketelling' && ` ${getYear(hendelse.dato)}`}</p>
             {hendelse.type !== 'folketelling' && <p>{formatDate(hendelse.dato)}</p>}
             <p>{hendelse.sted}</p>
-            {hendelse.type === 'vielse' && <MarriedTo hendelse={hendelse} personId={personId}/>}
+            {hendelse.type === 'vielse' && hendelse.personer.length > 1 && <MarriedTo hendelse={hendelse} personId={personId}/>}
             {hendelse.kilde && <p><LinkExternal href={hendelse.kilde.url}>{hendelse.kilde.tittel}</LinkExternal></p>}
             {hendelse.kommentar && <p>{hendelse.kommentar}</p>}
           </div>

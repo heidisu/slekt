@@ -1,0 +1,10 @@
+type: folketelling
+dato: '1900-01-01'
+sted: Sundby øvre
+kilde:
+  tittel: 'Folketelling 1900 for Ullensaker herred'
+  url: 'https://www.digitalarkivet.no/census/rural-residence/bf01037039000857'
+personer:
+- larsen-kristian
+- sundby-elen-kristine
+- sundby-hans
