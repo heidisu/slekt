@@ -1,0 +1,8 @@
+type: folketelling
+dato: '1910-01-01'
+sted: 'Gårder østre, Garmo'
+kilde:
+  tittel: 'Folketelling 1910 for Ullensaker herred'
+  url: 'https://www.digitalarkivet.no/census/rural-residence/bf01036386006552'
+personer:
+- sundby-hans

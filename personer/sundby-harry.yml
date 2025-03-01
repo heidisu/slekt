@@ -1,6 +1,8 @@
 fornavn: Harry Asbjørn
 etternavn: Sundby
 født: '1923-01-08'
+far: sundby-hans
+mor: antonsen-agnes-marie
 hendelser:
 - '1002'
 - '1003'
