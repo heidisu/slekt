@@ -1,0 +1,8 @@
+type: folketelling
+dato: '1920-01-01'
+sted: Kristiansands gate 17, leilighet 7
+kilde:
+  tittel: 'Folketelling 1920 for Kristiania kjøpstad'
+  url: 'https://www.digitalarkivet.no/census/apartment/lf01073701138516'
+personer:
+- antonsen-agnes-marie

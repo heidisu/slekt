@@ -8,7 +8,8 @@
     "check": "astro check",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "astro sync && cp node_modules/.astro/data-store.json .astro/ && vitest run"
+    "test": "astro sync && cp node_modules/.astro/data-store.json .astro/ && vitest run",
+    "create": "node tools.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

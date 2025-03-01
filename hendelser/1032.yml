@@ -1,0 +1,8 @@
+type: folketelling
+dato: '1920-01-01'
+sted: Pilestrædet 36, leilighet 1
+kilde:
+  tittel: 'Folketelling 1920 Kristiania kjøpstad'
+  url: 'https://www.digitalarkivet.no/census/apartment/lf01073701199225'
+personer:
+- sundby-hans
