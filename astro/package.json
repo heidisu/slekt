@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@astrojs/compiler-rs": "^0.1.10",
+    "vite": "^7.3.3",
     "vitest": "^3.0.6"
   }
 }
