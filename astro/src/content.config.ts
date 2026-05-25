@@ -1,9 +1,10 @@
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
+import { z } from 'astro/zod'
 import { glob } from 'astro/loaders';
 
 export const hendelseSchema = z.object({
     type: z.enum(['dåp', 'konfirmasjon', 'vielse', 'begravelse', 'folketelling']),
-    dato: z.string().date(),
+    dato: z.iso.date(),
     sted: z.string(),
     personer: z.array(reference('personer')),
     kilde: z.object({
@@ -17,7 +18,7 @@ export const personSchema = z.object({
   fornavn: z.string(),
   etternavn: z.string(),
   pikenavn: z.optional(z.string()),
-  født: z.string().date(),
+  født: z.iso.date(),
   beskrivelse: z.string().optional(),
   hendelser: z.optional(z.array(reference('hendelser'))),
   mor: z.optional(reference('personer')),
