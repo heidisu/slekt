@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Container from "../components/Container.astro";
 import Title from "../components/Title.astro";
 import Link from "../components/Link.astro";
+
 const personer = 
   (await getCollection("personer"))
   .sort((a, b) => {
@@ -28,5 +29,13 @@ const personer =
           ))
         }
       </ul>
+      <pre class="mermaid">
+      graph TD;
+          A-->B;
+          A-->C;
+          B-->D;
+          C-->D;
+          click A "/slekt/person/sundby-reidun"
+    </pre>
     </Container>
 </Layout>
